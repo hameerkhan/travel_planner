@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Planner Application</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body class="bg-white-100">
+    <nav class="blue darken-2 ">
+        <div class=" xl:ml-80 ">
+          <a href="#" class="brand-logo xl:-ml-52 md:-ml-32">Travel Planner</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class=" hide-on-med-and-down">
+            <li><a href="#flightSearch">Flight Search</a></li>
+            <li><a href="#planItineraries">Plan Itineraries</a></li>
+            <li><a href="#receiveTravelAlerts">Receive Travel Alerts</a></li>
+            <li><a href="#currencyConversion">Currency Conversion</a></li>
+            <li><a href="#socialSharing">Social Sharing</a></li>
+            <li><a href="#weatherForecasts">Weather Forecasts</a></li>
+            <li><a href="#offlineAccess">Offline Access</a></li>
+            <li><a href="#accessibilityFeatures">Accessibility Features</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="#flightSearch">Flight Search</a></li>
+        <li><a href="#planItineraries">Plan Itineraries</a></li>
+        <li><a href="#receiveTravelAlerts">Receive Travel Alerts</a></li>
+        <li><a href="#currencyConversion">Currency Conversion</a></li>
+        <li><a href="#socialSharing">Social Sharing</a></li>
+        <li><a href="#weatherForecasts">Weather Forecasts</a></li>
+        <li><a href="#offlineAccess">Offline Access</a></li>
+        <li><a href="#accessibilityFeatures">Accessibility Features</a></li>
+      </ul>
+    
+  <!--  -->
+
+  <div class="container mx-auto px-4 py-8">
+    <!-- Feature containers will go here -->
+    <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="flightSearch" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Flight Search</h2>
+    <form id="flightSearchForm" class="space-y-4">
+      <div>
+        <label for="origin" class="block text-gray-700">Origin:</label>
+        <input type="text" id="origin" name="origin" class="border border-gray-300 rounded-md px-4 py-2 w-full">
+      </div>
+      <div>
+        <label for="destination" class="block text-gray-700">Destination:</label>
+        <input type="text" id="destination" name="destination" class="border border-gray-300 rounded-md px-4 py-2 w-full">
+      </div>
+      <div>
+        <label for="departureDate" class="block text-gray-700">Departure Date:</label>
+        <input type="date" id="departureDate" name="departureDate" class="border border-gray-300 rounded-md px-4 py-2 w-full">
+      </div>
+      <div>
+        <label for="returnDate" class="block text-gray-700">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" class="border border-gray-300 rounded-md px-4 py-2 w-full">
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Search Flights</button>
+    </form>
+    <div id="flightResults" class="mt-8"></div>
+</div>
+    <!--  -->
+    <div id="planItineraries" class="card">
+        <div class="card-content">
+          <span class="card-title">Plan Itineraries</span>
+          <div id="itinerary-container">
+            <!-- Initial day itinerary fields -->
+            <div class="row itinerary-day">
+              <div class="col s12">
+                <h5>Day 1</h5>
+                <div class="input-field">
+                  <input type="text" class="day-activities validate">
+                  <label>Activities</label>
+                </div>
+                <div class="input-field">
+                  <input type="text" class="day-attractions validate">
+                  <label>Attractions</label>
+                </div>
+                <div class="input-field">
+                  <input type="text" class="day-accommodations validate">
+                  <label>Accommodations</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Button to add new day itinerary -->
+          <div class="row">
+            <div class="col s12">
+              <button class="btn waves-effect waves-light" onclick="addNewDay()">Add New Day</button>
+            </div>
+          </div>
+          <!-- Save buttons -->
+          <div class="row">
+            <div class="col s6">
+              <button class="btn waves-effect waves-light" onclick="saveAsText()">Save as Text</button>
+            </div>
+            <div class="col s6">
+              <button class="btn waves-effect waves-light" onclick="saveAsPDF()">Save as PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+          
+  
+  <!--  -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+    <div id="exploreDestinations" class="card">
+        <div class="card-content">
+          <span class="card-title">Explore Destinations</span>
+          <div class="input-field">
+            <input type="text" id="destinationSearch" class="validate">
+            <label for="destinationSearch">Search Destinations</label>
+          </div>
+          <div class="input-field">
+            <textarea id="destinationGuide" class="materialize-textarea validate"></textarea>
+            <label for="destinationGuide">Destination Guide</label>
+          </div>
+          <div class="input-field">
+            <textarea id="localAttractions" class="materialize-textarea validate"></textarea>
+            <label for="localAttractions">Local Attractions</label>
+          </div>
+          <div class="input-field">
+            <textarea id="activities" class="materialize-textarea validate"></textarea>
+            <label for="activities">Activities</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="weatherConditions" class="validate">
+            <label for="weatherConditions">Weather Conditions</label>
+          </div>
+          <div class="input-field">
+            <textarea id="travelAdvisories" class="materialize-textarea validate"></textarea>
+            <label for="travelAdvisories">Travel Advisories</label>
+          </div>
+        </div>
+      </div>
+      
+  <!-- 4 -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="receiveTravelAlerts" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Receive Travel Alerts</h2>
+  
+    <!-- Alert Notifications -->
+    <div id="alertNotifications">
+      <!-- Placeholder for alert notifications -->
+      <p class="text-gray-700">No alerts to display.</p>
+    </div>
+  </div>
+  <!-- 5 -->
+<!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+    <!-- <div id="currencyConversion" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Currency Conversion</h2> -->
+      
+        <!-- Currency Converter Form -->
+         <!-- <form id="currencyConverterForm" class="space-y-4">
+    <div class="flex items-center space-x-4">
+      <label for="amount" class="block text-gray-700">Amount:</label>
+      <input type="number" id="amount" name="amount" min="0" step="0.01" class="border border-gray-300 rounded-md px-4 py-2 w-40">
+    </div>
+    <div class="flex items-center space-x-4">
+      <label for="fromCurrency" class="block text-gray-700">From Currency:</label>
+      <select id="fromCurrency" name="fromCurrency" class="border border-gray-300 rounded-md px-4 py-2"> -->
+        <!-- Placeholder options for currencies -->
+        <!-- <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option> -->
+        <!-- Add more currency options as needed -->
+      <!-- </select>
+    </div>
+    <div class="flex items-center space-x-4">
+      <label for="toCurrency" class="block text-gray-700">To Currency:</label>
+      <select id="toCurrency" name="toCurrency" class="border border-gray-300 rounded-md px-4 py-2"> -->
+        <!-- Placeholder options for currencies -->
+        <!-- <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="USD">USD</option> -->
+        <!-- Add more currency options as needed -->
+      <!-- </select>
+    </div>
+    <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Convert</button>
+  </form> -->
+      
+        <!-- Conversion Result -->
+        <!-- <div id="conversionResult" class="mt-6"></div>
+      </div>
+       -->
+  <!-- 6 -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="socialSharing" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Social Sharing</h2>
+  
+    <!-- Share Buttons -->
+    <div class="flex items-center space-x-4">
+      <button id="sharePlanBtn" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Share Travel Plan</button>
+      <button id="shareExperienceBtn" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600">Share Experience</button>
+      <button id="sharePhotoBtn" class="bg-yellow-500 text-white px-6 py-3 rounded-md hover:bg-yellow-600">Share Photo</button>
+    </div>
+  </div>
+  <!-- 7 -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="weatherForecasts" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Weather Forecasts</h2>
+  
+    <!-- Weather Forecast Form -->
+    <form id="weatherForecastForm" class="space-y-4">
+      <div class="flex items-center space-x-4">
+        <label for="destination" class="block text-gray-700">Destination:</label>
+        <input type="text" id="destination" name="destination" class="border border-gray-300 rounded-md px-4 py-2 w-64">
+      </div>
+      <div class="flex items-center space-x-4">
+        <label for="date" class="block text-gray-700">Date:</label>
+        <input type="date" id="date" name="date" class="border border-gray-300 rounded-md px-4 py-2">
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Get Weather Forecast</button>
+    </form>
+  
+    <!-- Weather Forecast Result -->
+    <div id="weatherForecastResult" class="mt-6"></div>
+  </div>
+  <!-- 8 -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="offlineAccess" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Offline Access</h2>
+  
+    <!-- Save Data Form -->
+    <form id="saveDataForm" class="space-y-4">
+      <div class="flex items-center space-x-4">
+        <label for="data" class="block text-gray-700">Data:</label>
+        <textarea id="data" name="data" class="border border-gray-300 rounded-md px-4 py-2 w-64"></textarea>
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Save Data</button>
+    </form>
+  
+    <!-- Offline Data Display -->
+    <div id="offlineData" class="mt-6"></div>
+  </div>
+  <!-- 9 -->
+  <!-- Inside the <div class="container mx-auto px-4 py-8"> -->
+<div id="accessibilityFeatures" class="border border-gray-300 rounded-md px-6 py-8 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Accessibility Features</h2>
+  
+    <!-- Text-to-Speech -->
+    <div id="textToSpeech" class="mb-4">
+      <button id="speakButton" class="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600">Speak Text</button>
+    </div>
+  
+    <!-- Font Size -->
+    <div id="fontSize" class="mb-4">
+      <label for="fontSizeSelect" class="block text-gray-700 mb-2">Font Size:</label>
+      <select id="fontSizeSelect" class="border border-gray-300 rounded-md px-4 py-2">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+  </div>
+    </div>
+
+  </div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <script src="./javascript.js"></script>
+</body>
+</html>
